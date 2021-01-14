@@ -11,7 +11,7 @@ app.use(express.json());
 // app.use(bodyParser);
 app.use(express.urlencoded({ extended: false }));
 
-require("./routes/route1")(app);
+require("./routes/episodeRoutes")(app);
 require("./routes/route2.js")(app);
 
 var port = process.env.PORT || 5000;
