@@ -1,24 +1,25 @@
+// use "npm run server" to start
+
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
 import episodeRouter from "./routes/episodeRoutes.js";
-// const bodyParser = require('body-parser');
+import testRouter from "./routes/route2.js";
+import connectDB from "./config/db.js";
 
-const PORT = config.get("PORT");
+connectDB();
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
-// app.use(bodyParser);
 app.use(express.urlencoded({ extended: false }));
 
 app.use(episodeRouter);
+app.use(testRouter);
 
-require("./routes/episodeRoutes")(app);
-require("./routes/route2.js")(app);
+//const PORT = config.get("PORT");
+var PORT = process.env.PORT || 5000;
 
-var port = process.env.PORT || 5000;
-
-app.listen(port, () => {
-	console.log("server started on port 5000");
+app.listen(PORT, () => {
+	console.log(`server started on PORT ${PORT}`);
 });
