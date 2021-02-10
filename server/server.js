@@ -1,9 +1,9 @@
-const express = require("express");
-const cors = require("cors");
-const dotenv = require("dotenv");
+import express from "express";
+import cors from "cors"
+import dotenv from "dotenv"
 // const bodyParser = require('body-parser');
 
-dotenv.config({ path: "./.env" });
+const PORT = config.get("PORT")
 
 const app = express();
 app.use(cors());

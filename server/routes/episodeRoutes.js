@@ -1,4 +1,5 @@
-module.exports = (app) => {
+export default (app) => {
+
   const axios = require("axios");
 
   app.get("/episodes", async (req, res) => {
@@ -33,6 +34,7 @@ module.exports = (app) => {
       res.status(400).json({ error: error });
     }
   });
+  
 };
 
 //https://api.simplecast.com/podcasts/5b3564ed-5910-4943-a8f8-1cd845425e53/episodes?preview=true  gets all episodes
