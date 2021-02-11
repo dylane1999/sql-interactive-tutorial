@@ -4,7 +4,7 @@ import "./models/User.js";
 //* ^^^ This is importing a mongoDB schema.
 // Make sure to not import this again,
 // or it will be duplicated in our DB.
-// to have access the User model use:
+// to have access to the User model use:
 // const User = mongoose.model("User");
 
 import express from "express";

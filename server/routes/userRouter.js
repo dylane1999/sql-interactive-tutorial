@@ -16,14 +16,14 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/signup", async (req, res) => {
-	const { email, username } = req.body;
-	const user = new User({ email, username });
+	const { email } = req.body;
+	const user = new User({ email });
 
 	try {
 		await user.save();
-		sendWelcomeEmail(email, username);
+		sendWelcomeEmail(email);
 		res.status(200).send({
-			msg: `${username} succsesfully signed up! Check your inbox at ${email} to confirm your account!`
+			msg: `Succsesfully signed up! Check your inbox at ${email} to confirm your account!`
 		});
 	} catch (err) {
 		console.log(err.message);
@@ -37,9 +37,7 @@ router.delete("/delete", async (req, res) => {
 		await User.findOneAndDelete({ email }, (err, doc) => {
 			if (err) res.status(403).send(err.mesage);
 
-			const { username } = doc;
-
-			sendCancellationEmail(email, username);
+			sendCancellationEmail(email);
 
 			const msg = `The following document has been removed because the user unsubcribed: ${doc}`;
 			console.log(msg);

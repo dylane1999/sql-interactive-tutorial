@@ -5,19 +5,19 @@ const sgAPI = config.get("sendGridKey");
 
 sgMail.setApiKey(sgAPI);
 
-export const sendWelcomeEmail = (email, username) => {
+export const sendWelcomeEmail = (email) => {
 	sgMail.send({
 		to: email,
 		from: "dylan@g.morison.org",
 		subject: "Welcome!",
-		text: `Welcome ${username}. Let us know how you like our app!`
+		text: `Welcome. Let us know how you like our app!`
 	});
 };
-export const sendCancellationEmail = (email, username) => {
+export const sendCancellationEmail = (email) => {
 	sgMail.send({
 		to: email,
 		from: "dylan@g.morison.org",
 		subject: "Account Cancellation",
-		text: `Sorry to see you go, ${username}!`
+		text: `Sorry to see you go!`
 	});
 };

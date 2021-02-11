@@ -6,8 +6,7 @@ const UserSchema = new Schema({
 		type: String,
 		unique: true,
 		required: true
-	},
-	username: String
+	}
 });
 
 export default mongoose.model("User", UserSchema);
