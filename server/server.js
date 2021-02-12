@@ -1,21 +1,36 @@
-import express from "express";
-import cors from "cors"
-import dotenv from "dotenv"
-// const bodyParser = require('body-parser');
+// !use "npm run server" to start
 
-const PORT = config.get("PORT")
+import "./models/User.js";
+//* ^^^ This is importing a mongoDB schema.
+// Make sure to not import this again,
+// or it will be duplicated in our DB.
+// to have access to the User model use:
+// const User = mongoose.model("User");
+
+import express from "express";
+import cors from "cors";
+import helmet from "helmet";
+import episodeRouter from "./routes/episodeRoutes.js";
+import testRouter from "./routes/route2.js";
+import userRouter from "./routes/userRouter.js";
+import connectDB from "./config/db.js";
+
+connectDB();
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
-// app.use(bodyParser);
 app.use(express.urlencoded({ extended: false }));
+app.use(helmet());
 
-require("./routes/episodeRoutes")(app);
-require("./routes/route2.js")(app);
+app.use(episodeRouter);
+app.use(testRouter);
+app.use("/users", userRouter);
 
-var port = process.env.PORT || 5000;
+//const PORT = config.get("PORT");
+var PORT = process.env.PORT || 5000;
 
-app.listen(port, () => {
-	console.log('server started on port 5000');
+app.listen(PORT, () => {
+	console.log(`server started on PORT ${PORT}`);
 });
