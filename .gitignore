@@ -27,3 +27,7 @@ yarn-error.log*
 
 # secrets 
 .envrc
+
+#config
+config
+config/default.json
