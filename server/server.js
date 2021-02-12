@@ -14,6 +14,7 @@ import episodeRouter from "./routes/episodeRoutes.js";
 import testRouter from "./routes/route2.js";
 import userRouter from "./routes/userRouter.js";
 import connectDB from "./config/db.js";
+import seasonRouter from "./routes/seasonRoutes.js"
 
 connectDB();
 
@@ -25,6 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(helmet());
 
 app.use(episodeRouter);
+app.use(seasonRouter);
 app.use(testRouter);
 app.use("/users", userRouter);
 
