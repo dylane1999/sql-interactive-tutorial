@@ -1,6 +1,8 @@
 import express from "express";
 import axios from "axios";
+import config from "config"
 
+const SIMPLECAST_BEARER = config.get("SIMPLECAST_BEARER")
 const router = express.Router();
 
 router.get("/episodes", async (req, res) => {
@@ -9,11 +11,11 @@ router.get("/episodes", async (req, res) => {
 			"https://api.simplecast.com/podcasts/5b3564ed-5910-4943-a8f8-1cd845425e53/episodes?preview=true",
 			{
 				headers: {
-					Token: process.env.SIMPLECAST_BEARER
+					Token: SIMPLECAST_BEARER
 				}
 			}
 		);
-		res.send({ simplecastData: simplecastRequest.data.collection });
+		res.status(200).send({ simplecastData: simplecastRequest.data.collection });
 	} catch (error) {
 		res.status(400).json({ error: error });
 	}
@@ -26,11 +28,11 @@ router.get("/episodes/:episodeId", async (req, res) => {
 			`https://api.simplecast.com/episodes/${episodeId}?preview=true`,
 			{
 				headers: {
-					Token: process.env.SIMPLECAST_BEARER
+					Token: SIMPLECAST_BEARER
 				}
 			}
 		);
-		res.send(episodeData.data);
+		res.status(200).send(episodeData.data);
 	} catch (error) {
 		res.status(400).json({ error: error });
 	}
