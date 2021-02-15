@@ -10,6 +10,11 @@ router.get("/season1", async (req, res) => {
   /**
    * Gets data about a season, publish date
    * no. of episdodes, meta data about season
+   *
+   * @param req -> the request object which contains the body and params of the request
+   * @param res -> the response object, which is returned with the correct status header and podcast season data
+   *
+   * @return -> res.status(200).send(data) || res.status(400).json(error)
    */
   try {
     const simplecastRequest = await axios.get(
@@ -28,8 +33,13 @@ router.get("/season1", async (req, res) => {
 
 router.get("/season1/episodes", async (req, res) => {
   /**
-   * Gets every episode in the season. 
+   * Gets every episode in the season.
    * includes mp3 files and episode descriptions
+   *
+   * @param req -> the request object which contains the body and params of the request
+   * @param res -> the response object, which is returned with the correct status header and podcast episodes for season 1
+   *
+   * @return -> res.status(200).send(data) || res.status(400).json(error)
    */
   try {
     const simplecastRequest = await axios.get(
@@ -47,4 +57,3 @@ router.get("/season1/episodes", async (req, res) => {
 });
 
 export default router;
-
