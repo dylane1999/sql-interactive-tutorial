@@ -1,17 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/App";
+import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import GlobalStyle from "./GlobalStyle";
+import GlobalStyle from "./styles/GlobalStyle";
 import { Provider } from "react-redux";
-import appReducer from "./reducers";
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import logger from "redux-logger";
+import store from "./store"
 
-const store = configureStore({
-  reducer: appReducer,
-  middleware: [logger, ...getDefaultMiddleware()],
-});
 
 ReactDOM.render(
   <React.StrictMode>
