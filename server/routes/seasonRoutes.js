@@ -16,7 +16,7 @@ router.get("/season1", async (req, res) => {
       "https://api.simplecast.com/seasons/a9ec7b7a-02be-4252-9760-fab7c9945b7e",
       {
         headers: {
-          Token: SIMPLECAST_BEARER,
+          authorization: SIMPLECAST_BEARER,
         },
       }
     );
@@ -36,7 +36,7 @@ router.get("/season1/episodes", async (req, res) => {
       "https://api.simplecast.com/seasons/a9ec7b7a-02be-4252-9760-fab7c9945b7e/episodes",
       {
         headers: {
-          Token: SIMPLECAST_BEARER,
+          authorization: SIMPLECAST_BEARER,
         },
       }
     );
