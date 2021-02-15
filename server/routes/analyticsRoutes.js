@@ -24,7 +24,7 @@ router.get("/top_10", async (req, res) => {
           },
         }
       );
-      console.log(topEpisodeData);
+      console.log(topEpisodeData.data);
       res.status(200).send(topEpisodeData.data);
     } catch (error) {
         console.log(error);
