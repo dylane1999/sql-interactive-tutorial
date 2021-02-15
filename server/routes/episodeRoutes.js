@@ -56,6 +56,7 @@ router.get("/:episodeId", async (req, res) => {
   }
 });
 
+export default router;
 //https://api.simplecast.com/podcasts/5b3564ed-5910-4943-a8f8-1cd845425e53/episodes?preview=true  gets all episodes
 //https://api.simplecast.com/seasons/a9ec7b7a-02be-4252-9760-fab7c9945b7e   - get season
 //https://api.simplecast.com/episodes/38dd12b5-0197-49ee-b231-4a933609fd40?preview=true   - get episdode by ID
