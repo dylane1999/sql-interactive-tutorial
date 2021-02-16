@@ -34,7 +34,7 @@ app.use(seasonRouter);
 app.use(testRouter);
 app.use("/users", userRouter);
 app.use("/analytics", analyticsRouter);
-app.use(youtubeRouter)
+app.use("/youtube", youtubeRouter)
 
 //const PORT = config.get("PORT");
 var PORT = process.env.PORT || 5000;
