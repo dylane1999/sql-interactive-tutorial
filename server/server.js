@@ -17,6 +17,7 @@ import userRouter from "./routes/userRouter.js";
 import connectDB from "./config/db.js";
 import seasonRouter from "./routes/seasonRoutes.js"
 import analyticsRouter from "./routes/analyticsRoutes.js";
+import youtubeRouter from "./routes/youtubeRoutes.js"
 
 connectDB();
 
@@ -33,6 +34,7 @@ app.use(seasonRouter);
 app.use(testRouter);
 app.use("/users", userRouter);
 app.use("/analytics", analyticsRouter);
+app.use("/youtube", youtubeRouter)
 
 //const PORT = config.get("PORT");
 var PORT = process.env.PORT || 5000;
