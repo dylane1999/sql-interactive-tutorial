@@ -1,1 +1,1 @@
-podcast application for ecom degree
+MySql Interactive App

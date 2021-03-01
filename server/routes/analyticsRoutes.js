@@ -2,7 +2,7 @@ import express from "express";
 import axios from "axios";
 import config from "config";
 
-const SIMPLECAST_BEARER = config.get("SIMPLECAST_BEARER");
+// const SIMPLECAST_BEARER = config.get("SIMPLECAST_BEARER");
 const router = express.Router();
 
 router.get("/top_10", async (req, res) => {
@@ -17,7 +17,7 @@ router.get("/top_10", async (req, res) => {
     try {
       const podcastId = config.get("PODCAST_ID");
       const topEpisodeData = await axios.get(
-        `https://api.simplecast.com/analytics/episodes/top_10?podcast=${podcastId}`,
+        `https://api.simplecast.com/analytics/episodes/top_10?podcast=6768956`,
         {
           headers: {
             authorization: SIMPLECAST_BEARER,

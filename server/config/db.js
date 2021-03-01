@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import config from "config";
 const mongoURI = config.get("mongoURI");
 
-export default async () => {
+const connectDB = async () => {
 	try {
 		await mongoose.connect(
 			mongoURI,
@@ -19,3 +19,6 @@ export default async () => {
 		process.exit(1);
 	}
 };
+
+
+export default connectDB 
