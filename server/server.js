@@ -4,12 +4,15 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
+import config from "config"
 
-import connectDB from "./config/db.js";
+import SqlDriver from "./config/db.js";
 import analyticsRouter from "./routes/analyticsRoutes.js";
 
 
-connectDB();
+SqlDriver.getDriver();
+/** connect to the SQL database */
+
 
 const app = express();
 
