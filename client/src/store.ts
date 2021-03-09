@@ -1,11 +1,13 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit'
-
-const rootReducer = combineReducers({})
+import { configureStore } from '@reduxjs/toolkit'
+import logger from "redux-logger"
+import rootReducer from "./reducers"
+// get the redux dev toolds extension and redux logger 
 
 const store = configureStore({
-  reducer: rootReducer
+  reducer: rootReducer,
+  middleware:  (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 })
 
-export type RootState = ReturnType<typeof rootReducer>
+export type RootState = ReturnType<typeof store.getState>
 
 export default store
