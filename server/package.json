@@ -21,7 +21,8 @@
     "googleapis": "^67.0.0",
     "helmet": "^4.4.1",
     "morgan": "^1.10.0",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "sqlstring": "^2.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
