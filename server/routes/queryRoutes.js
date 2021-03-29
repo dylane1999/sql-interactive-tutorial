@@ -12,6 +12,8 @@ router.post("/query", async (req, res) => {
    *
    * @param req -> the request object which contains the body and params (``podcastId``) of the request
    * @param res -> the response object, which is returned with the sql database response
+   * 
+   * @return -> res.status(200).send(data); ||  res.status(400).json({ error: error });
    *
    */
   try {
