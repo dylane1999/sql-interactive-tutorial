@@ -13,18 +13,22 @@ router.post("/query", async (req, res) => {
    * @param req -> the request object which contains the body and params (``podcastId``) of the request
    * @param res -> the response object, which is returned with the sql database response
    * 
-   * @return -> res.status(200).send(data); ||  res.status(400).json({ error: error });
+   * @return -> res.status(200).send(sqlResponse); ||  res.status(400).json({ error: error });
    *
    */
   try {
+      intr
     const driver = SqlDriver.getDriver();
     const query = req.body.query;
-    const data = await SqlDriver.queryDB(query);
+    const sqlResponse = await SqlDriver.queryDB(query);
     console.log(data, "query results");
-    res.status(200).send(data);
+    if (sqlResponse instanceof Error){
+        throw sqlResponse
+    }
+    res.status(200).send(sqlResponse);
   } catch (error) {
     console.log(error);
-    res.status(400).json({ error: error });
+    res.status(400).json({ error: error.message });
   }
 });
 

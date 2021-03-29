@@ -1,11 +1,11 @@
 import config from "config";
 import mysql from "mysql";
-const host = config.get("host")
-const password = config.get("password")
-const user = config.get("user")
-const SqlPort = config.get("SqlPort")
-const database = config.get("database")
-import SqlString from "sqlstring"
+const host = config.get("host");
+const password = config.get("password");
+const user = config.get("user");
+const SqlPort = config.get("SqlPort");
+const database = config.get("database");
+import SqlString from "sqlstring";
 
 const connection = mysql.createConnection({
   host: host,
@@ -35,7 +35,11 @@ class mySqlDB {
     try {
       const response = await new Promise((resolve, reject) => {
         connection.query(query, (err, results) => {
-          if (err) reject(new Error(err.message));
+          /** if error, reject promise with error message given from sql server */
+          if (err) {
+            reject(new Error(err.message));
+          }
+          /** if success, resolve promise with value of sql query results */
           resolve(results);
         });
       });
@@ -44,6 +48,7 @@ class mySqlDB {
       return response;
     } catch (err) {
       console.log(err);
+      return err
     }
   }
 
