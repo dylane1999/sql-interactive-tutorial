@@ -8,6 +8,7 @@ import config from "config"
 
 import SqlDriver from "./config/db.js";
 import analyticsRouter from "./routes/analyticsRoutes.js";
+import queryRoutes from "./routes/queryRoutes.js"
 
 
 SqlDriver.getDriver();
@@ -22,8 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(helmet());
 app.use(morgan("common"));
 
-// app.use(testRouter);
-app.use("/analytics", analyticsRouter);
+app.use(queryRoutes);
 
 
 const PORT = config.get("PORT") || 5000;
