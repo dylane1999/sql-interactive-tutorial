@@ -17,11 +17,9 @@ router.post("/query", async (req, res) => {
    *
    */
   try {
-      intr
     const driver = SqlDriver.getDriver();
     const query = req.body.query;
     const sqlResponse = await SqlDriver.queryDB(query);
-    console.log(data, "query results");
     if (sqlResponse instanceof Error){
         throw sqlResponse
     }
