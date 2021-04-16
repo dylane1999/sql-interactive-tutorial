@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -8,12 +8,12 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import { nanoid } from "nanoid";
 
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
     backgroundColor: "#3A3A3A",
-
   },
   paper: {
     backgroundColor: "#3A3A3A",
@@ -23,63 +23,75 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number
-) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-];
-
 const DataContainerRoot = styled.div`
   width: 100%;
   height: 100%;
 `;
 
+const getHeaderValues = (firstRow: Object): Array<string> => {
+  let headerValues = [];
+  for (const [key, value] of Object.entries(firstRow)) {
+    headerValues.push(key);
+  }
+  return headerValues;
+};
+
+const getTableRowValues = (tableRow: Object): Array<string> => {
+  let tableValues = [];
+  for (const [key, value] of Object.entries(tableRow)) {
+    tableValues.push(value);
+  }
+  return tableValues;
+};
+
+const GetTableRow = (row: Object) => {
+  const tableValues = getTableRowValues(row)
+  const classes = useStyles();
+  return (
+    <TableRow key={nanoid()}>
+    {tableValues.map((value) => {
+      return (
+        <TableCell
+          className={classes.whiteText}
+          scope="row"
+        >
+          {value}
+        </TableCell>
+      );
+    })}
+  </TableRow>
+  )
+}
+
 export interface IDataContainerProps {
-    tableHeadArray: Array<string>
-    
+  tableData: Array<any>;
 }
 
 const DataContainer = (props: IDataContainerProps) => {
   const classes = useStyles();
+  const [headerArray, setHeaderArray] = useState(
+    getHeaderValues(props.tableData[0])
+  );
+  const [TableValues, setTableValues] = useState<Array<string>>([]);
 
   return (
     <DataContainerRoot>
-        <Table className={classes.table} aria-label="simple table">
-          <TableHead>
-            <TableRow className={classes.whiteText}>
-              <TableCell className={classes.whiteText}>Dessert (100g serving)</TableCell>
-              <TableCell className={classes.whiteText} align="right">Calories</TableCell>
-              <TableCell className={classes.whiteText} align="right">Fat&nbsp;(g)</TableCell>
-              <TableCell className={classes.whiteText} align="right">Carbs&nbsp;(g)</TableCell>
-              <TableCell className={classes.whiteText} align="right">Protein&nbsp;(g)</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row.name}>
-                <TableCell className={classes.whiteText} component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell className={classes.whiteText} align="right">{row.calories}</TableCell>
-                <TableCell className={classes.whiteText} align="right">{row.fat}</TableCell>
-                <TableCell className={classes.whiteText} align="right">{row.carbs}</TableCell>
-                <TableCell className={classes.whiteText} align="right">{row.protein}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+      <Table className={classes.table} aria-label="simple table">
+        <TableHead>
+          <TableRow className={classes.whiteText}>
+            {headerArray.map((header) => {
+              return (
+                <TableCell className={classes.whiteText}>{header}</TableCell>
+              );
+            })}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {props.tableData.map((row)=> {
+            return GetTableRow(row)
+          })}
+        </TableBody>
+      </Table>
     </DataContainerRoot>
   );
 };
