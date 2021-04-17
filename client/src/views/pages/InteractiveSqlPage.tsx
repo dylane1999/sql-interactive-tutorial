@@ -1,15 +1,21 @@
-import React from 'react'
+import React from "react";
+import styled from "styled-components";
+import EditorMenu, { IEditorMenuProps } from "../components/EditorMenu";
+import Instructions, {IInstructionsProps } from "../components/Instructions"
 
-interface Props {
-    
+export interface IInteractiveSqlPageProps {
+    x: number
 }
 
-const InteractiveSqlPage = (props: Props) => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+const Root = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+`;
 
-export default InteractiveSqlPage
+const InteractiveSqlPage = (props: IInteractiveSqlPageProps) => {
+  return <Root></Root>;
+};
+
+export default InteractiveSqlPage;

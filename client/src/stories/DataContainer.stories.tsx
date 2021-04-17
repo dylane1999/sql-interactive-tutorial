@@ -3,8 +3,8 @@ import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
 import MenuTab from "../views/components/EditorMenu/MenuTab";
-import DataContainer from "../views/components/EditorMenu/DataContainer";
-import { IDataContainerProps } from "../views/components/EditorMenu/DataContainer";
+import DataContainer from "../views/components/DataContainer";
+import { IDataContainerProps } from "../views/components/DataContainer";
 // value: string
 // label: string
 
