@@ -44,24 +44,6 @@ const getTableRowValues = (tableRow: Object): Array<string> => {
   return tableValues;
 };
 
-const GetTableRow = (row: Object) => {
-  const tableValues = getTableRowValues(row)
-  const classes = useStyles();
-  return (
-    <TableRow key={nanoid()}>
-    {tableValues.map((value) => {
-      return (
-        <TableCell
-          className={classes.whiteText}
-          scope="row"
-        >
-          {value}
-        </TableCell>
-      );
-    })}
-  </TableRow>
-  )
-}
 
 export interface IDataContainerProps {
   tableData: Array<any>;
@@ -69,17 +51,31 @@ export interface IDataContainerProps {
 
 const DataContainer = (props: IDataContainerProps) => {
   const classes = useStyles();
-  const [headerArray, setHeaderArray] = useState(
-    getHeaderValues(props.tableData[0])
-  );
-  const [TableValues, setTableValues] = useState<Array<string>>([]);
+
+  const getTableRow = (row: Object) => {
+    const tableValues = getTableRowValues(row)
+    return (
+      <TableRow key={nanoid()}>
+      {tableValues.map((value) => {
+        return (
+          <TableCell
+            className={classes.whiteText}
+            scope="row"
+          >
+            {value}
+          </TableCell>
+        );
+      })}
+    </TableRow>
+    )
+  }
 
   return (
     <DataContainerRoot>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow className={classes.whiteText}>
-            {headerArray.map((header) => {
+            {getHeaderValues(props.tableData[0]).map((header) => {
               return (
                 <TableCell className={classes.whiteText}>{header}</TableCell>
               );
@@ -88,7 +84,7 @@ const DataContainer = (props: IDataContainerProps) => {
         </TableHead>
         <TableBody>
           {props.tableData.map((row)=> {
-            return GetTableRow(row)
+            return getTableRow(row)
           })}
         </TableBody>
       </Table>
