@@ -1,27 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import incrementValue from "./middleware/Counter/incrementValue";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./store";
-import InteractiveSqlPage from "./views/pages/InteractiveSqlPage"
+import InteractiveSqlPage from "./views/pages/InteractiveSqlPage";
 
-let isCorrect = false
+
 
 function App() {
-  const dispatch = useDispatch();
-  const state = useSelector((state: RootState) => state.counter.currentValue);
-  /** Alternate: const state = useSelector<RootState, number>(state => state.counter.currentValue); */
-  function setCorrect(value: boolean){
-    isCorrect = value
-    console.log(isCorrect)
+  const [isCorrect, setIsCorrect] = useState<boolean>(false);
+
+  /**
+   * function setCorrect()
+   * sets the isCorrect state -> true
+   */
+  function setCorrect() {
+    setIsCorrect(true);
   }
   return (
     <>
-    {!isCorrect === true
-      ?<div className="App">
-        <InteractiveSqlPage isCorrect={isCorrect} setCorrect={setCorrect}/>
-      </div>
-      : <></>
-    }
+        <div className="App">
+          <InteractiveSqlPage isCorrect={isCorrect} setCorrect={setCorrect} expectedQuery={"SELECT * FROM People"}/>
+        </div>
     </>
   );
 }
