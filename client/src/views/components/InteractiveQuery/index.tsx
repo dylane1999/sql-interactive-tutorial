@@ -28,7 +28,9 @@ const Spacing = styled.div`
   padding: 16px;
 `;
 
-export interface IInteractiveQueryProps {}
+export interface IInteractiveQueryProps {
+  currentQuery: any
+}
 
 const InteractiveQuery = (props: IInteractiveQueryProps) => {
   const [SqlQuery, setSqlQueryuery] = useState<string>("");
@@ -52,6 +54,7 @@ const InteractiveQuery = (props: IInteractiveQueryProps) => {
       });
       console.log(response);
       setSqlResult(response.data)
+      props.currentQuery(SqlQuery)
     } catch (error) {
       console.error(error);
       alert("the query was unsuccesful or incorrect");
