@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import EditorMenu, { IEditorMenuProps } from "../components/EditorMenu";
-import Instructions, { IInstructionsProps } from "../components/Instructions";
+import EditorMenu, { IEditorMenuProps } from "./EditorMenu";
+import Instructions, { IInstructionsProps } from "./Instructions";
 import InteractiveQuery, {
   IInteractiveQueryProps,
-} from "../components/InteractiveQuery/index";
+} from "./InteractiveQuery/index";
 import { Button, makeStyles } from "@material-ui/core";
 
 /**
- * @interface IInteractiveSqlPageProps
+ * @interface IInteractiveSqlProps
  * @field isCorrect: boolean;
  * @field setCorrect: any;
  * @field expectedQuery: string
  */
-export interface IInteractiveSqlPageProps {
+export interface IInteractiveSqlProps {
   isCorrect: boolean;
   setCorrect: any;
   expectedQuery: string;
@@ -58,7 +58,7 @@ const styles = makeStyles({
   },
 });
 
-const InteractiveSqlPage = (props: IInteractiveSqlPageProps) => {
+const InteractiveSql = (props: IInteractiveSqlProps) => {
   const [CurrentQuery, setCurrentQuery] = useState<string>("");
 
   function setInstructionsText() {
@@ -117,4 +117,4 @@ const InteractiveSqlPage = (props: IInteractiveSqlPageProps) => {
   );
 };
 
-export default InteractiveSqlPage;
+export default InteractiveSql;

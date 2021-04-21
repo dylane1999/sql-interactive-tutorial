@@ -6,7 +6,7 @@ const useStyles = makeStyles({
   text: {
     color: "white",
     backgroundColor: "#fffff",
-    width: "775px",
+    width: "30vw",
     minHeight: "300px",
   },
   inputLabel: {

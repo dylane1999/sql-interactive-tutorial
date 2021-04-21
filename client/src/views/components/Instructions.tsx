@@ -19,8 +19,8 @@ const InstructionsRoot = styled.div`
   justify-content: flex-start;
   padding: 16px;
   background-color: whitesmoke;
-  width: 600px;
-  min-height: 400px;
+  width: 30vw;
+  height: 400px;
 `;
 
 const InstructionsHeading = styled.h4`
