@@ -16,7 +16,10 @@ import { Button, makeStyles } from "@material-ui/core";
 export interface IInteractiveSqlPageProps {
   isCorrect: boolean;
   setCorrect: any;
-  expectedQuery: string
+  expectedQuery: string;
+  instructionsTitle: string;
+  instructionsText: string;
+  handleNextPage(): void;
 }
 
 const Root = styled.div`
@@ -76,29 +79,31 @@ const InteractiveSqlPage = (props: IInteractiveSqlPageProps) => {
 
   useEffect(() => {
     if (CurrentQuery === expectedQuery) {
-      console.log(CurrentQuery, "current query")
+      console.log(CurrentQuery, "current query");
       props.setCorrect(true);
     }
     return () => {
       /** cleans up the effect by setting to the default -> false */
-      props.setCorrect(false)
-    }
-
+      props.setCorrect(false);
+    };
   }, [CurrentQuery]);
-
 
   return (
     <Root>
       <InstructionsWrapper>
         <Instructions
-          instructionsText={setInstructionsText()}
-          instructionsTitle={setInstructionsTitle()}
+          instructionsText={props.instructionsText}
+          instructionsTitle={props.instructionsTitle}
           isCorrect={props.isCorrect}
         />
         {props.isCorrect && (
           <>
             <Spacing />
-            <Button variant="contained" color="secondary" onClick={handleClick}>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => props.handleNextPage()}
+            >
               Next Challenge
             </Button>
           </>
@@ -106,8 +111,7 @@ const InteractiveSqlPage = (props: IInteractiveSqlPageProps) => {
       </InstructionsWrapper>
       <InteractionsWrapper>
         <InteractiveQuery currentQuery={setCurrentQuery} />
-        <ButtonWrapper>
-        </ButtonWrapper>
+        <ButtonWrapper></ButtonWrapper>
       </InteractionsWrapper>
     </Root>
   );
