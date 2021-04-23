@@ -1,5 +1,7 @@
 //! use "npm run server" to start
-
+import dotenv from "dotenv";
+dotenv.config({ path: "./env"});
+console.log(process.env.PORT, "passowrd")
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
@@ -9,6 +11,9 @@ import config from "config"
 import SqlDriver from "./config/db.js";
 import analyticsRouter from "./routes/analyticsRoutes.js";
 import queryRoutes from "./routes/queryRoutes.js"
+
+
+
 
 
 SqlDriver.getDriver();
@@ -26,7 +31,7 @@ app.use(morgan("common"));
 app.use(queryRoutes);
 
 
-const PORT = config.get("PORT") || 5000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
 	console.log(`server started on PORT ${PORT}`);
