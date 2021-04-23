@@ -1,0 +1,26 @@
+{
+  "name": "sql-interactive-tutorial",
+  "version": "1.0.0",
+  "description": "MySql Interactive App",
+  "main": "index.js",
+  "dependencies": {
+    "concurrently": "^6.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "npm run server --prefix ./server",
+    "client": "npm start --prefix ./client",
+    "start": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dylane1999/sql-interactive-tutorial.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dylane1999/sql-interactive-tutorial/issues"
+  },
+  "homepage": "https://github.com/dylane1999/sql-interactive-tutorial#readme"
+}
