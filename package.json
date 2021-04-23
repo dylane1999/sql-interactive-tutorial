@@ -11,7 +11,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "npm run server --prefix ./server",
     "client": "npm start --prefix ./client",
-    "start": "concurrently \"npm run server\" \"npm run client\""
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "clientBuild" : "npm run build --prefix ./client"
   },
   "repository": {
     "type": "git",
