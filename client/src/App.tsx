@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "./views/components/NavBar";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SqlTutorialPage from "./views/pages/SqlTutorialPage";
+import IntroPage from "./views/pages/IntroductionPage";
 import styled from "styled-components";
 
 const NoneErrorWrapper = styled.div`
@@ -29,7 +30,7 @@ const App = () => {
         <div>
           <Switch>
             <Route exact path="/">
-              Add Intro Component here
+              <IntroPage/>
             </Route>
             <Route exact path="/practice" component={SqlTutorialPage}/>
             <Route component={NotFound} />
