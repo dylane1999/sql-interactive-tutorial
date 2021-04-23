@@ -1,0 +1,8 @@
+{
+    "PORT": 5000,
+    "host": "localhost",
+    "user": "root",
+    "SqlPort": 3306,
+    "password": "dylanE19",
+    "database": "tutorialDatabase"
+}
