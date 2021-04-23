@@ -1,15 +1,28 @@
 version: '3.1'
 
 services:
+  db:
+    image: mysql
+    restart: always
+    container_name: mysql5
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: dylanE19
+      MYSQL_DATABASE: tutorialDatabase
   backend:
+    depends_on:
+      - db
     env_file:
-        "./server/.env"
+        "./server/.env" 
     build:
       context: ./server
       dockerfile: ./Dockerfile
     image: "djdyl/tutorial-backend"
     ports:
       - "5000:5000"
+    links: 
+      - "db"
   frontend:
     build:
       context: ./client
@@ -19,16 +32,3 @@ services:
       - "3000:3000"
     links:
       - "backend"
-
-
-      # db:
-      #   image: mysql
-      #   restart: always
-      #   container_name: mysql5
-      #   ports:
-      #     - 3307:3306
-      #   environment:
-      #     MYSQL_ROOT_PASSWORD: dylanE19
-      #     MYSQL_DATABASE: tutorialDatabase
-      #     MYSQL_HOST: localhost
-      #     MYSQL_USER: root 

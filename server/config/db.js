@@ -2,16 +2,16 @@ import config from "config";
 import mysql from "mysql2";
 const host = process.env.HOST;
 const password = process.env.PASSWORD;
-const user = process.env.USER;
+const user = process.env.MY_USER;
 const SqlPort = process.env.SQLPORT;
 const database = process.env.DATABASE;
-console.log(password, "passowrd")
+console.log(host, "hoat")
 import SqlString from "sqlstring";
 
 const connection = mysql.createConnection({
-  host: host,
+  host: "db",
   user: user,
-  port: SqlPort,
+  port: 3036,
   password: password,
   database: database,
 });
