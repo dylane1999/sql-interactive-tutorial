@@ -1,10 +1,11 @@
 import config from "config";
-import mysql from "mysql";
-const host = config.get("host");
-const password = config.get("password");
-const user = config.get("user");
-const SqlPort = config.get("SqlPort");
-const database = config.get("database");
+import mysql from "mysql2";
+const host = process.env.HOST;
+const password = process.env.PASSWORD;
+const user = process.env.MY_USER;
+const SqlPort = process.env.SQLPORT;
+const database = process.env.DATABASE;
+console.log(host, "hoat")
 import SqlString from "sqlstring";
 
 const connection = mysql.createConnection({
@@ -48,7 +49,7 @@ class mySqlDB {
       return response;
     } catch (err) {
       console.log(err);
-      return err
+      return err;
     }
   }
 
