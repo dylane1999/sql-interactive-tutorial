@@ -7,14 +7,14 @@ services:
     build:
       context: ./server
       dockerfile: ./Dockerfile
-    image: "djdyl/twitter-sentiment-backend"
+    image: "djdyl/sql-tutorial-backend"
     ports:
       - "5000:5000"
   frontend:
     build:
       context: ./client
       dockerfile: ./Dockerfile
-    image: "djdyl/twitter-sentiment-frontend"
+    image: "djdyl/sql-tutorial-frontend"
     ports:
       - "80:3000"
     links:
