@@ -49,7 +49,7 @@ const InteractiveQuery = (props: IInteractiveQueryProps) => {
 
   async function makeQuery() {
     try {
-      const response = await axios.post("http://localhost:5000/query", {
+      const response = await axios.post("http://104.236.194.67:5000/query", {
         query: SqlQuery,
       });
       console.log(response);
